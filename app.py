@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from docx import Document
 import os
 from datetime import datetime
@@ -6,13 +6,13 @@ from datetime import datetime
 app = Flask(__name__)
 
 def replace_all(doc, mapping):
-    # Normal paragraphs
+    # Replace in normal paragraphs
     for p in doc.paragraphs:
         for k, v in mapping.items():
             if k in p.text:
                 p.text = p.text.replace(k, v)
 
-    # Tables
+    # Replace inside tables
     for table in doc.tables:
         for row in table.rows:
             for cell in row.cells:
@@ -86,15 +86,22 @@ def index():
 
         replace_all(doc, mapping)
 
-        # Ensure output folder exists
-        if not os.path.exists("output"):
-            os.makedirs("output")
-
-        # Unique filename with timestamp
-        filename = f"output/LEGAL_REPORT_{datetime.now().strftime('%Y%m%d%H%M%S')}.docx"
+        # Temporary file name
+        filename = f"LEGAL_REPORT_{datetime.now().strftime('%Y%m%d%H%M%S')}.docx"
         doc.save(filename)
 
-        return "Form submitted successfully"
+        response = send_file(
+            filename,
+            as_attachment=True
+        )
+
+        # Delete file after sending
+        @response.call_on_close
+        def cleanup():
+            if os.path.exists(filename):
+                os.remove(filename)
+
+        return response
 
     return render_template("form.html")
 
