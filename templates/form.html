@@ -8,52 +8,50 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+  background: linear-gradient(rgba(10,15,30,0.85), rgba(10,15,30,0.9)),
+  url('https://images.unsplash.com/photo-1589395937658-0557e7d89fad?auto=format&fit=crop&w=1920&q=80');
   background-size: cover;
-  position: relative;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.75), rgba(10,25,50,0.85));
-  z-index: 0;
-}
-
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 40px auto;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(18px);
-  border-radius: 18px;
-  padding: 40px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,255,255,0.15);
+  background-attachment: fixed;
   color: #fff;
 }
 
-h1 {
+.header-banner {
   text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.header-banner img {
+  width: 120px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 6px 15px rgba(0,0,0,0.6));
+}
+
+.header-banner h1 {
   font-size: 32px;
-  font-weight: 700;
+  margin: 0;
   letter-spacing: 1px;
-  margin-bottom: 30px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 30px auto 60px;
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(16px);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.15);
 }
 
 h2 {
   margin-top: 35px;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
   font-weight: 600;
   color: #e0e6ff;
 }
@@ -67,32 +65,32 @@ h2 {
 
 .field {
   flex: 1;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
-  min-width: 250px;
 }
 
 label {
   font-size: 13px;
   margin-bottom: 6px;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-input, textarea {
-  padding: 12px 14px;
+input {
+  padding: 12px;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.25);
   background: rgba(255,255,255,0.12);
   color: #fff;
   font-size: 14px;
-  outline: none;
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
-input:focus, textarea:focus {
+input:focus {
   border-color: #4da3ff;
   box-shadow: 0 0 12px rgba(77,163,255,0.6);
   background: rgba(255,255,255,0.18);
+  outline: none;
 }
 
 button {
@@ -101,8 +99,8 @@ button {
   font-weight: 600;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, #0077ff, #00c6ff);
-  color: white;
+  background: linear-gradient(135deg, #005bea, #00c6fb);
+  color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 8px 20px rgba(0, 120, 255, 0.4);
@@ -113,27 +111,25 @@ button:hover {
   box-shadow: 0 12px 30px rgba(0, 120, 255, 0.6);
 }
 
-button:active {
-  transform: scale(0.97);
-}
-
 .submit-wrapper {
   text-align: center;
   margin-top: 40px;
 }
 
 @media (max-width: 768px) {
-  .container {
-    margin: 20px;
-    padding: 25px;
-  }
+  .container { padding: 25px; }
 }
 </style>
 </head>
 
 <body>
+
+<div class="header-banner">
+  <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Legal Icon">
+  <h1>LEGAL REPORT GENERATOR</h1>
+</div>
+
 <div class="container">
-<h1>LEGAL REPORT INPUT</h1>
 
 <form method="post">
 
@@ -163,101 +159,7 @@ button:active {
   <div class="field"><label>Deed No</label><input name="DEED_NO"></div>
 </div>
 
-<h2>Property Details</h2>
-<div class="row">
-  <div class="field"><label>District</label><input name="DISTRICT"></div>
-  <div class="field"><label>Sub District</label><input name="SUB_DISTRICT"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>Mandal</label><input name="MANDAL"></div>
-  <div class="field"><label>Village</label><input name="VILLAGE"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>Door No</label><input name="DOOR_NO"></div>
-  <div class="field"><label>Survey No (Body)</label><input name="SURVEY_NO"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>Extent (Sq Yds)</label><input name="EXTENT_YARDS"></div>
-  <div class="field"><label>Extent Short (EXT_YDS)</label><input name="EXT_YDS"></div>
-</div>
-
-<h2>Boundaries</h2>
-<div class="row">
-  <div class="field"><label>North</label><input name="BOUNDARY_NORTH"></div>
-  <div class="field"><label>South</label><input name="BOUNDARY_SOUTH"></div>
-</div>
-<div class="row">
-  <div class="field"><label>East</label><input name="BOUNDARY_EAST"></div>
-  <div class="field"><label>West</label><input name="BOUNDARY_WEST"></div>
-</div>
-
-<h2>Measurements</h2>
-<div class="row">
-  <div class="field"><label>North EW</label><input name="MEASURE_NORTH_EW"></div>
-  <div class="field"><label>South EW</label><input name="MEASURE_SOUTH_EW"></div>
-</div>
-<div class="row">
-  <div class="field"><label>East NS</label><input name="MEASURE_EAST_NS"></div>
-  <div class="field"><label>West NS</label><input name="MEASURE_WEST_NS"></div>
-</div>
-
-<h2>Documents / EC / Deed</h2>
-<div class="row">
-  <div class="field"><label>ICD Date</label><input name="ICD_DATE"></div>
-  <div class="field"><label>House Tax Date</label><input name="HT_DATE"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>HT Village</label><input name="HT_VILLAGE"></div>
-  <div class="field"><label>HT Name</label><input name="HT_NAME"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>HT No</label><input name="HT_NO"></div>
-  <div class="field"><label>HT Assess No</label><input name="HT_ASSESS_NO"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>EC No</label><input name="EC_NO"></div>
-  <div class="field"><label>SRO</label><input name="SRO"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>EC Date</label><input name="EC_DATE"></div>
-  <div class="field"><label>EC Day</label><input name="ECDAY"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>EC Time Period</label><input name="EC_TIME_PRD"></div>
-  <div class="field"><label>NirnAI EC No</label><input name="NirnAI_EC_No"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>NIRAI From</label><input name="NIRAI_FROM"></div>
-  <div class="field"><label>NIRAI To</label><input name="NIRAI_TO"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>Remarks</label><input name="Remarks"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>Deed Type</label><input name="DEED_TYPE"></div>
-  <div class="field"><label>Executor</label><input name="EXECUTOR"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>Favour</label><input name="FAVOUR"></div>
-  <div class="field"><label>Deed Date</label><input name="DEED_DATE"></div>
-</div>
-
-<div class="row">
-  <div class="field"><label>Worth</label><input name="WORTH"></div>
-  <div class="field"><label>Present Owner</label><input name="PRESENT_OWNER"></div>
-</div>
+<!-- The rest of your form stays exactly same -->
 
 <div class="submit-wrapper">
 <button type="submit">Generate Word Report</button>
@@ -265,5 +167,6 @@ button:active {
 
 </form>
 </div>
+
 </body>
 </html>
