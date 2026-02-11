@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request
 from docx import Document
+import os
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -10,7 +12,7 @@ def replace_all(doc, mapping):
             if k in p.text:
                 p.text = p.text.replace(k, v)
 
-    # Tables (THIS IS THE FIX)
+    # Tables
     for table in doc.tables:
         for row in table.rows:
             for cell in row.cells:
@@ -84,11 +86,17 @@ def index():
 
         replace_all(doc, mapping)
 
-        output = "LEGAL_REPORT_FINAL.docx"
-        doc.save(output)
-        return send_file(output, as_attachment=True)
+        # Ensure output folder exists
+        if not os.path.exists("output"):
+            os.makedirs("output")
+
+        # Unique filename with timestamp
+        filename = f"output/LEGAL_REPORT_{datetime.now().strftime('%Y%m%d%H%M%S')}.docx"
+        doc.save(filename)
+
+        return "Form submitted successfully"
 
     return render_template("form.html")
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(host="0.0.0.0", port=10000)
