@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Legal Report Generator</title>
+<style>
+body { font-family: Segoe UI, Arial; background:#f4f6f8; }
+.container { max-width:1100px; margin:20px auto; background:#fff; padding:25px; border-radius:8px; }
+h1 { text-align:center; }
+h2 { border-bottom:1px solid #ddd; padding-bottom:4px; margin-top:25px; }
+.row { display:flex; gap:15px; margin-bottom:10px; }
+.field { flex:1; display:flex; flex-direction:column; }
+label { font-size:13px; color:#555; }
+input, textarea { padding:8px; font-size:14px; }
+button { padding:12px 30px; font-size:15px; background:#0066cc; color:#fff; border:none; border-radius:5px; }
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>LEGAL REPORT INPUT</h1>
+
+<form method="post">
+
+<h2>Basic Details</h2>
+<div class="row">
+  <div class="field"><label>Date</label><input name="DATE"></div>
+  <div class="field"><label>Branch</label><input name="Branch"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>Applicant</label><input name="Applicant"></div>
+  <div class="field"><label>Co-Applicant</label><input name="Co_Applicant"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>Title Holder</label><input name="TitleHolder"></div>
+  <div class="field"><label>Loan Amount</label><input name="Loan_Amount"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>A/C No</label><input name="AC_No"></div>
+  <div class="field"><label>NirnAI No</label><input name="NirnAI_No"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>Survey No (Header)</label><input name="SY_No"></div>
+  <div class="field"><label>Deed No</label><input name="DEED_NO"></div>
+</div>
+
+<h2>Property Details</h2>
+<div class="row">
+  <div class="field"><label>District</label><input name="DISTRICT"></div>
+  <div class="field"><label>Sub District</label><input name="SUB_DISTRICT"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>Mandal</label><input name="MANDAL"></div>
+  <div class="field"><label>Village</label><input name="VILLAGE"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>Door No</label><input name="DOOR_NO"></div>
+  <div class="field"><label>Survey No (Body)</label><input name="SURVEY_NO"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>Extent (Sq Yds)</label><input name="EXTENT_YARDS"></div>
+  <div class="field"><label>Extent Short (EXT_YDS)</label><input name="EXT_YDS"></div>
+</div>
+
+<h2>Boundaries</h2>
+<div class="row">
+  <div class="field"><label>North</label><input name="BOUNDARY_NORTH"></div>
+  <div class="field"><label>South</label><input name="BOUNDARY_SOUTH"></div>
+</div>
+<div class="row">
+  <div class="field"><label>East</label><input name="BOUNDARY_EAST"></div>
+  <div class="field"><label>West</label><input name="BOUNDARY_WEST"></div>
+</div>
+
+<h2>Measurements</h2>
+<div class="row">
+  <div class="field"><label>North EW</label><input name="MEASURE_NORTH_EW"></div>
+  <div class="field"><label>South EW</label><input name="MEASURE_SOUTH_EW"></div>
+</div>
+<div class="row">
+  <div class="field"><label>East NS</label><input name="MEASURE_EAST_NS"></div>
+  <div class="field"><label>West NS</label><input name="MEASURE_WEST_NS"></div>
+</div>
+
+<h2>Documents / EC / Deed</h2>
+<div class="row">
+  <div class="field"><label>ICD Date</label><input name="ICD_DATE"></div>
+  <div class="field"><label>House Tax Date</label><input name="HT_DATE"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>HT Village</label><input name="HT_VILLAGE"></div>
+  <div class="field"><label>HT Name</label><input name="HT_NAME"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>HT No</label><input name="HT_NO"></div>
+  <div class="field"><label>HT Assess No</label><input name="HT_ASSESS_NO"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>EC No</label><input name="EC_NO"></div>
+  <div class="field"><label>SRO</label><input name="SRO"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>EC Date</label><input name="EC_DATE"></div>
+  <div class="field"><label>EC Day</label><input name="ECDAY"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>EC Time Period</label><input name="EC_TIME_PRD"></div>
+  <div class="field"><label>NirnAI EC No</label><input name="NirnAI_EC_No"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>NIRAI From</label><input name="NIRAI_FROM"></div>
+  <div class="field"><label>NIRAI To</label><input name="NIRAI_TO"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>Remarks</label><input name="Remarks"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>Deed Type</label><input name="DEED_TYPE"></div>
+  <div class="field"><label>Executor</label><input name="EXECUTOR"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>Favour</label><input name="FAVOUR"></div>
+  <div class="field"><label>Deed Date</label><input name="DEED_DATE"></div>
+</div>
+
+<div class="row">
+  <div class="field"><label>Worth</label><input name="WORTH"></div>
+  <div class="field"><label>Present Owner</label><input name="PRESENT_OWNER"></div>
+</div>
+
+<div style="text-align:center;margin-top:30px;">
+<button type="submit">Generate Word Report</button>
+</div>
+
+</form>
+</div>
+</body>
+</html>
